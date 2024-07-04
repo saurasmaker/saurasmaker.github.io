@@ -17,6 +17,15 @@ hr{
     padding: 0;
 }
 
+table{
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+a.red-hover:hover{
+    color:#C73659 !important;
+}
+
 b.red{
     color:#C73659;
 }
@@ -51,4 +60,50 @@ b.red{
 
 .text-toogle[aria-expanded=true] .text-collapsed {
     display: none;
-  }
+}
+
+a.home-title
+{
+    font-weight: 600;
+    color: white !important;
+
+    background-image: linear-gradient(
+        to right,
+        #C73659,
+        #C73659 50%,
+        white,
+        white 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+a.home-title:before {
+        content: '';
+        background: #C73659;
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        transition: all 0.3s ease-in-out;
+}   
+
+a.home-title:hover {
+    background-position: 0;
+}
+
+a.home-title:hover::before {
+width:100%;
+}
+
+.date{
+    font-size: small;
+}
