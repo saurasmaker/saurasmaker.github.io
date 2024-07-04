@@ -12,9 +12,18 @@ hr{
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #A91D3A;
+    border-top: 1px solid #a91d3975;
     margin: 1em 0;
     padding: 0;
+}
+
+b.red{
+    color:#C73659;
+}
+
+.hr-to-edges{
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .progress-bar-red {
@@ -27,10 +36,19 @@ hr{
 
 .card {
     background-color: #151515 !important;
-    border-color: #A91D3A;
+    border-color: #a91d3975;
 }
 
 
 .dark-background {
     background-color: #151515 !important;
 }
+
+
+.text-toogle[aria-expanded=false] .text-expanded {
+    display: none;
+}
+
+.text-toogle[aria-expanded=true] .text-collapsed {
+    display: none;
+  }
