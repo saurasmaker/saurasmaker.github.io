@@ -1,11 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Currículum Vitae</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .cv-header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+
+        .cv-section {
+            margin-top: 20px;
+        }
+
+        .cv-section h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .cv-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cv-section ul li {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Iván Saura Cuadrado</h1>
+
+    <div class="container mt-5">
+        <div class="cv-header text-center">
+            <h1>Nombre Completo</h1>
+            <p>Dirección | Teléfono | Correo Electrónico | LinkedIn</p>
+        </div>
+
+        <div class="cv-section">
+            <h2>Resumen Profesional</h2>
+            <p>Descripción breve sobre tu experiencia profesional, habilidades y objetivos de carrera.</p>
+        </div>
+
+        <div class="cv-section">
+            <h2>Experiencia Laboral</h2>
+            <ul>
+                <li>
+                    <h5>Nombre del Puesto</h5>
+                    <p><em>Nombre de la Empresa - Ciudad, País</em></p>
+                    <p>Fecha de Inicio - Fecha de Fin</p>
+                    <p>Descripción breve de las responsabilidades y logros.</p>
+                </li>
+                <!-- Añade más experiencias laborales según sea necesario -->
+            </ul>
+        </div>
+
+        <div class="cv-section">
+            <h2>Educación</h2>
+            <ul>
+                <li>
+                    <h5>Nombre del Título</h5>
+                    <p><em>Nombre de la Institución - Ciudad, País</em></p>
+                    <p>Fecha de Inicio - Fecha de Fin</p>
+                    <p>Descripción breve de cursos relevantes y logros académicos.</p>
+                </li>
+                <!-- Añade más educación según sea necesario -->
+            </ul>
+        </div>
+
+        <div class="cv-section">
+            <h2>Habilidades</h2>
+            <ul>
+                <li>Habilidad 1</li>
+                <li>Habilidad 2</li>
+                <li>Habilidad 3</li>
+                <!-- Añade más habilidades según sea necesario -->
+            </ul>
+        </div>
+
+        <div class="cv-section">
+            <h2>Certificaciones</h2>
+            <ul>
+                <li>Nombre de la Certificación - Año</li>
+                <!-- Añade más certificaciones según sea necesario -->
+            </ul>
+        </div>
+
+        <div class="cv-section">
+            <h2>Idiomas</h2>
+            <ul>
+                <li>Idioma 1 - Nivel</li>
+                <li>Idioma 2 - Nivel</li>
+                <!-- Añade más idiomas según sea necesario -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
