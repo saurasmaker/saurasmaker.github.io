@@ -1,7 +1,13 @@
 body {
     background-color: #151515;
+    background-image: url("https://wallpapercave.com/wp/wp3091497.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:     cover;  
     font-family: Arial, sans-serif;
     color: #EEEEEE;
+
+
 }
 
 svg{
@@ -30,6 +36,15 @@ b.red{
     color:#C73659;
 }
 
+.main-container{
+    box-shadow: 0 0 15px 10px black;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.main-body{
+    margin: 0;
+    padding: 0;
+}
 
 .hr-to-edges{
     margin-left: 0;
