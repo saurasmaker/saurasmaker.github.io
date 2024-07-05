@@ -28,6 +28,8 @@ table{
     overflow: hidden;
 }
 
+
+
 p.justify{
     text-align: justify;
 }
@@ -48,6 +50,51 @@ b.red{
 .main-body{
     margin: 0;
     padding: 0;
+}
+
+
+@media (min-width: 768px) {
+    .profile-frame-top-fixed{
+        /*
+        position: -webkit-sticky;
+        position: sticky;
+        top: 75px;
+        */
+        overflow: hidden;
+        position: sticky;
+        margin-top: auto;
+        bottom: 0px;
+    }
+}
+
+@media (orientation:landscape){
+    .profile-frame-top-fixed{
+        /*
+        position: -webkit-sticky;
+        position: sticky;
+        top: 75px;
+        */
+        overflow: hidden;
+        position: sticky;
+        top: 75px;
+    }
+}
+
+@media (orientation:portrait) and (min-width: 768px){
+    .profile-frame-top-fixed{
+        /*
+        position: -webkit-sticky;
+        position: sticky;
+        top: 75px;
+        */
+        overflow: hidden;
+        position: sticky;
+        top: 75px;
+    }
+}
+
+.fill{
+    background-color: yellow;
 }
 
 .hr-to-edges{
