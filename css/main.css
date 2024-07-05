@@ -28,6 +28,10 @@ table{
     overflow: hidden;
 }
 
+p.justify{
+    text-align: justify;
+}
+
 a.red-hover:hover{
     color:#C73659 !important;
 }
