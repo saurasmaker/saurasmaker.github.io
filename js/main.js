@@ -1,88 +1,126 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const sidebar = document.getElementById('left-profile-panel');
-    const skillsbutton = document.getElementById('digital-skills-collapse');
-    const divFiller = document.getElementById("toggle-fill");
-    
-    var isTop = false;
+/*
+    === VALORES ÚTILES PARA STICKY ===
 
+    clientHeight -> Altura del elemento. 
+    offsetTop -> Posición relativa al top del elemento padre. Si el borde superior está arriba del todo su valor será '0'
+    offsetBot -> No existe, hay que calcularlo. Para ello hay que hacer la siguiente operación "clientHeight + offsetTop"
+
+
+    === VALORES ÚTILES PARA ABSOLUTE ===
+    sidebar.getBoundingClientRect() sirve para coger los valores con respecto a la ventana del navegador. 
+*/
+
+const sidebar = document.getElementById('left-profile-panel');
+const skillsbutton = document.getElementById('digital-skills-collapse');
+
+var sidebarRect = null;
+var sidebarParentRect = null;
+var sidebarOffsetBot = null;
+var prevOffsetTop = "0";
+
+var isTop = false;
+
+document.addEventListener('DOMContentLoaded', onLoadDomContent);
+
+function onLoadDomContent() {
+    
     skillsbutton.onclick = adjustSidebar;
 
     window.addEventListener('scroll', adjustSidebar);
     window.addEventListener('resize', adjustSidebar);
-
-    function adjustSidebar() {
-        const sidebarRect = sidebar.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        const sidebarOffsetBot = sidebar.clientHeight + sidebar.offsetTop;
-        
-        console.log(sidebarRect.bottom + " " + viewportHeight + isTop);
-
-        if(sidebar.style.position == "absolute"){
-    
-            
-            if(sidebarOffsetBot > sidebar.parentElement.offsetHeight){
-
-            }
+}
 
 
-            if(sidebarRect.bottom < viewportHeight){
-                sidebar.style.position = '-webkit-sticky';
-                sidebar.style.position = 'sticky';
-                sidebar.style.top = 'auto';
-                sidebar.style.bottom = '0';
-    
-                divFiller.style.height = "100%";
-                isTop = false;
-            }
-            else if(sidebarRect.top > 75){
-                sidebar.style.position = '-webkit-sticky';
-                sidebar.style.position = 'sticky';
-                sidebar.style.top = '75px';
-                sidebar.style.bottom = 'auto';
-                isTop = true;
-                divFiller.style.height = "0";
-            }
+
+
+function adjustSidebar() {
+    sidebarRect = sidebar.getBoundingClientRect();
+    sidebarParentRect = sidebar.parentElement.getBoundingClientRect();
+    sidebarOffsetBot = sidebar.clientHeight + sidebar.offsetTop;
+
+    prevOffsetTop = sidebar.offsetTop;
+
+    if(sidebar.classList.contains("profile-frame-absolute")){
+        if(window.innerHeight > sidebar.clientHeight){
+            setStickyTop();
         }
-        else {   
-            
-            var a = sidebar.offsetTop
-            console.log("sidebarOffsetBot = " + sidebar.offsetTop);
-            console.log("sidebarOffsetTop = " + sidebarOffsetBot);
-            console.log("sidebar.parentElement.offsetHeight = " + sidebar.parentElement.offsetHeight);
-            
-            
-                if (sidebar.offsetTop <= 75){
-
-                }
-                else if(sidebarOffsetBot <= 0){
-                    sidebar.style.position = '-webkit-sticky';
-                    sidebar.style.position = 'sticky';
-                    sidebar.style.top = '75px';
-                    sidebar.style.bottom = 'auto';
-                    isTop = true;
-                    divFiller.style.height = "0";
-                }
-
-                if(sidebarRect.bottom > viewportHeight){
-                    sidebar.style.position = "absolute";
-                    sidebar.style.top = a.toString() + "px";
-                    console.log(sidebarRect.bottom + " " + viewportHeight + " " + a);
-        
-                    divFiller.style.height = "0";
-                }
-            
-                else if(sidebarRect.top < 75){
-                    sidebar.style.position = "absolute";
-                    sidebar.style.top = a.toString() + "px";
-                    console.log(sidebarRect.bottom + " " + viewportHeight + " " + a);
-        
-                    divFiller.style.height = "0";
-                }  
-        
-            
-            
+        else if(sidebarRect.top > 75){
+            sidebar.style.top = sidebarParentRect.top < 0 ? 75 - sidebarParentRect.top + "px" : "0";
+            sidebar.style.bottom = null;
         }
-        
+        else if(sidebarRect.bottom < window.innerHeight){
+            sidebar.style.bottom = sidebarParentRect.bottom > window.innerHeight ? (sidebarParentRect.bottom - window.innerHeight) + "px" : "0";
+            sidebar.style.top = null;
+        }
     }
-});
+    else {   
+        if(sidebarRect.top < 75 && sidebarOffsetBot < sidebar.parentElement.clientHeight)
+            setAbsolute();
+        else if(sidebarRect.bottom > window.innerHeight && sidebar.offsetTop > 75)
+            setAbsolute();
+    }
+    
+}
 
+
+function setAbsolute(){
+    
+    sidebar.style.top = null; 
+    sidebar.style.bottom = null; 
+
+    sidebar.classList.remove("profile-frame-bot-fixed");
+    sidebar.classList.remove("profile-frame-top-fixed");
+
+    sidebar.classList.add("profile-frame-absolute");
+
+    sidebar.style.top = prevOffsetTop + "px"; 
+}
+
+function setStickyBottom(){
+
+    sidebar.style.top = null; 
+    sidebar.style.bottom = "0px"; 
+
+    sidebar.classList.remove("profile-frame-absolute");
+    sidebar.classList.remove("profile-frame-top-fixed");
+
+    sidebar.classList.add("profile-frame-bot-fixed");
+
+    isTop = false;
+}
+
+function setStickyTop(){
+
+    sidebar.style.top = "75px"; 
+    sidebar.style.bottom = null;
+
+    sidebar.classList.remove("profile-frame-absolute");
+    sidebar.classList.remove("profile-frame-bot-fixed");
+
+    sidebar.classList.add("profile-frame-top-fixed");
+    isTop = true;
+}
+
+function debug(){
+    console.log(""
+        + "=== sidebar ===\n" 
+        + "sidebar.parentElement.clientHeight = " + sidebar.parentElement.clientHeight + "\n"
+        + "sidebar.clientHeight  = " + sidebar.clientHeight + "\n"
+        + "sidebar.offsetTop   = " + sidebar.offsetTop + "\n"
+        + "sidebarOffsetBot = " + sidebarOffsetBot + "\n"
+    );
+
+    console.log(""
+        + "=== sidebar rect ===\n" 
+        + "window.innerHeight = " + window.innerHeight + "\n"
+        + "sidebarRect.top = " + sidebarRect.top + "\n"
+        + "sidebarRect.bottom = " + sidebarRect.bottom + "\n"
+    );
+
+    console.log(""
+        + "=== sidebar parent rect ===\n" 
+        + "window.innerHeight = " + window.innerHeight + "\n"
+        + "sidebarParentRect.top = " + sidebarParentRect.top + "\n"
+        + "sidebarParentRect.bottom = " + sidebarParentRect.bottom + "\n"
+    );
+}

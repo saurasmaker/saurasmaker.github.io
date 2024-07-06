@@ -74,9 +74,30 @@ b.red{
         position: sticky;
         top: 75px;
         */
+
         overflow: hidden;
+        position: -webkit-sticky;
         position: sticky;
         top: 75px;
+    }
+
+    .profile-frame-bot-fixed{
+        /*
+        position: -webkit-sticky;
+        position: sticky;
+        top: 75px;
+        */
+
+        overflow: hidden;
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0px;
+    }
+
+    .profile-frame-absolute{
+        margin-top: 0;
+        position: absolute;
+        height: fit-content;
     }
 }
 
@@ -87,14 +108,31 @@ b.red{
         position: sticky;
         top: 75px;
         */
+
         overflow: hidden;
+        position: -webkit-sticky;
         position: sticky;
         top: 75px;
     }
-}
 
-.fill{
-    background-color: yellow;
+    .profile-frame-bot-fixed{
+        /*
+        position: -webkit-sticky;
+        position: sticky;
+        top: 75px;
+        */
+
+        overflow: hidden;
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0px;
+    }
+
+    .profile-frame-absolute{
+        margin-top: 0;
+        position: absolute;
+        height: fit-content;
+    }
 }
 
 .hr-to-edges{
