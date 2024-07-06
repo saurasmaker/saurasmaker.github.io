@@ -65,6 +65,8 @@ function adjustSidebar() {
 
 function setAbsolute(){
     
+    var prevWidth = sidebar.clientWidth;
+
     sidebar.style.top = null; 
     sidebar.style.bottom = null; 
 
